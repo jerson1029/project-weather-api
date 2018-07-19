@@ -1,4 +1,4 @@
-const handler = require('./handlers/handler').hello;
+const handler = require('./handlers/test/handler').hello;
 
 handler(
     {  

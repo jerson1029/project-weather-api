@@ -22,8 +22,8 @@ provider:
   runtime: nodejs6.10
 
 # you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  stage: test
+  region: ap-southeast-1
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -55,8 +55,8 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: src/handlers/handler.hello
+  weather:
+    handler: src/handlers/test/handler.hello
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
