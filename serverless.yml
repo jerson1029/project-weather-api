@@ -53,8 +53,6 @@ resources:
         AttributeDefinitions:
           - AttributeName: city
             AttributeType: S
-          - AttributeName: id
-            AttributeType: S
           - AttributeName: lon
             AttributeType: S
           - AttributeName: lat

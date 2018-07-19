@@ -1,0 +1,30 @@
+{
+    "plugins": [
+      "import",
+      "jest"
+    ],
+    "parser": "babel-eslint",
+    "rules": {
+      "max-len": [0],
+      "indent": [1, 4],
+      "no-underscore-dangle": [0],
+      "import/extensions": [0],
+      "strict": [0],
+      "key-spacing": [0],
+      "one-var-declaration-per-line": [0],
+      "one-var": [0],
+      "no-console": [1],
+      "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+      "linebreak-style": 0,
+      "import/prefer-default-export": 0,
+      "camelcase": 0,
+      "no-plusplus": 0,
+      "no-param-reassign": 0,
+      "prefer-promise-reject-errors": 0
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  }
+  
