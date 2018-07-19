@@ -6,10 +6,9 @@ handler(
         "path":"/weather",
         "httpMethod":"GET",
         "headers":null,
-        "queryStringParameters":null,
+        "queryStringParameters":{"q":"Kuala Lumpur"},
         "pathParameters":{},
         "stageVariables":null,
-        "Body": {"q":"Kuala Lumpur"} ,
         "isBase64Encoded":false
      }
     , null, (err, data) => {

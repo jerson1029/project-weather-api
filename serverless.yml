@@ -31,7 +31,7 @@ provider:
         - Fn::GetAtt:
           - DynamoDbTable
           - Arn
-        - "arn:aws:dynamodb:${self:custom.common.AWS_REGION}:*:table/${self:provider.environment.DYNAMODB_TABLE}/index/*"
+        - "arn:aws:dynamodb:${self:custom.common.AWS_REGION}:693819851672:table/${self:provider.environment.DYNAMODB_TABLE}/index/*"
 
 functions:
   weather:
@@ -49,7 +49,7 @@ resources:
     DynamoDbTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ${self:service}
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
         AttributeDefinitions:
           - AttributeName: city
             AttributeType: S
