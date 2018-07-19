@@ -1,3 +1,4 @@
+require('dotenv').config();
 
 import DDB from '../helpers/dynamoDBHelper';
 

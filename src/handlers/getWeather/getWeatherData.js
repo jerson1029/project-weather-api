@@ -1,4 +1,4 @@
-'use strict';
+require('dotenv').config();
 
 import api from '../../helpers/apiHelper';
 import { weatherPath } from '../../helpers/pathHelper';

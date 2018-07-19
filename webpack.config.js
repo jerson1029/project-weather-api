@@ -1,34 +1,32 @@
-const webpack = require('webpack');
 const path = require('path');
+const serverlessWebpack = require('serverless-webpack');
 
 module.exports = {
-    entry: {
-        weather: ['babel-polyfill', './src/handlers/getWeather/handler.js'],
-    },
-    target: 'node',
-    output: {
-        libraryTarget: 'commonjs',
-        path: path.join(__dirname, '.webpack'),
-        filename: '[name].js',
-    },
-    plugins: [
-        new webpack.DefinePlugin({ 'global.GENTLY': false }),
+  entry: serverlessWebpack.lib.entries,
+  target: 'node',
+  devtool: 'source-map',
+  output: {
+    libraryTarget: 'commonjs',
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+        include: __dirname,
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: __dirname,
+        exclude: /node_modules/,
+      },
     ],
-    module: {
-        loaders: [
-            {
-                test: /\.json$/,
-                loader: 'json-loader',
-            },
-            {
-                test: /\.js$/,
-                loaders: ['babel-loader'],
-                include: __dirname,
-                exclude: /node_modules/,
-            },
-        ],
-    },
-    externals: [
-        'aws-sdk',
-    ],
+  },
+  externals: [
+    'aws-sdk',
+  ],
 };
