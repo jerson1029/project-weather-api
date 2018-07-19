@@ -9,7 +9,6 @@ const put = params =>
         const docClient = new AWS.DynamoDB.DocumentClient({ service: dynamodb });
         docClient.put(params, (err, data) => {
             if (err) {
-                console.log(err);
                 reject(err);
             } else {
                 resolve(data);
