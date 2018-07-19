@@ -1,12 +1,14 @@
 
 version: 2
+
+job_defaults: &job_defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.11
+
 jobs:
-  build:
-    docker:
-      - image: circleci/node:8.11
-
-    working_directory: ~/repo
-
+  deploy_weather_test:
+    <<: *job_defaults
     steps:
       - checkout
 
@@ -17,7 +19,13 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn run deploy
+      - run: 
+          name: Deploy weather api to test environment
+          command: yarn run deploy
+          environment:
+            ENV: test
+            WEATHER_API_KEY: acb20588808ef012922edb1f08477a38
+            WEATHER_URL: https://api.openweathermap.org/data/2.5
 
       - save_cache:
           paths:
@@ -27,4 +35,12 @@ jobs:
       # run tests!
       #- run: yarn test
 
-
+workflows:
+  version: 2
+  deploy_weather_service:
+    jobs:
+    - deploy_weather_test:
+        filters:
+          branches:
+            only:
+              - master
