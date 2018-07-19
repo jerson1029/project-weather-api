@@ -25,7 +25,9 @@ jobs:
             echo 'export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_TEST' >> $BASH_ENV
       - run: 
           name: Deploy weather api to test environment
-          command: yarn run deploy
+          command: |
+            yarn install
+            yarn run deploy
           environment:
             ENV: test
             WEATHER_API_KEY: acb20588808ef012922edb1f08477a38
