@@ -43,8 +43,6 @@ functions:
           cors:
             origins:
               - '*'
-plugins:
-  - serverless-offline
 
 resources:
   Resources:
