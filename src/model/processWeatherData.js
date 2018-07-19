@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 import DDB from '../helpers/dynamoDBHelper';
 
 export const storeWeatherData = async weatherData => {

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node src/_testHandlerCall.js",
     "deploy": "serverless deploy",
     "test": "jest",
-    "test:serve": "cross-env STAGE=test AWS_ENDPOINT=http://localhost:3132 WEATHER_API_KEY=123 WEATHER_URL=https://weather-api.com/weather AWS_ACCESS_KEY_ID=test AWS_SECRET_ACCESS_KEY=test ENV=test AWS_REGION=ap-southeast-1 serverless offline start",
     "lint": "eslint src/**/*.js --fix --ignore-path .eslintignore",
     "precommit": "yarn run lint",
     "prepush": "yarn run test"
