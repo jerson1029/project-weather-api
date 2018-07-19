@@ -5,6 +5,7 @@ export const handler = async (event, context, callback) => {
         const getWeatherByCity = await getWeatherDataByCity(event.queryStringParameters);
         const getWeatherByCoordinates = await getWeatherDataByCoordinates(getWeatherByCity);
         callback(null, { statusCode:200, Body: JSON.stringify({ currentWeather: getWeatherByCity, oppositeWeather: getWeatherByCoordinates}) });
+    
     } catch (error) {
         callback(error);
     }
