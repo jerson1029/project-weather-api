@@ -8,7 +8,6 @@ export const storeWeatherData = async weatherData => {
             TableName: process.env.DYNAMODB_TABLE
         };
         const response = await DDB.put(params);
-        console.log(params);
     } catch (error) {
         throw error;
     }
