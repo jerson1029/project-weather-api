@@ -23,20 +23,19 @@ jobs:
           command: |
             echo 'export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_TEST' >> $BASH_ENV
             echo 'export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_TEST' >> $BASH_ENV
-      - run: 
-          name: Deploy weather api to test environment
-          command: |
-            yarn install
-            yarn run deploy
-          environment:
-            ENV: test
-            WEATHER_API_KEY: acb20588808ef012922edb1f08477a38
-            WEATHER_URL: https://api.openweathermap.org/data/2.5
-
+      - run:
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: 
+          name: Deploy weather api to test environment
+          command: yarn run deploy
+          environment:
+            ENV: test
+            WEATHER_API_KEY: acb20588808ef012922edb1f08477a38
+            WEATHER_URL: https://api.openweathermap.org/data/2.5
       
       # run tests!
       #- run: yarn test
