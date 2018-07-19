@@ -1,13 +1,7 @@
 {
-    "presets": [
-      [
-        "env", {
-          "targets": {
-            "node": "8.11"
-          }
-        }
-      ]
-    ],
-    "plugins": [
-    ]
+  "plugins": [
+  ],
+  "presets": [
+    "es2015"
+  ]
 }
