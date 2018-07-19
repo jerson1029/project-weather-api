@@ -3,12 +3,11 @@
       [
         "env", {
           "targets": {
-            "node": "8.10"
+            "node": "8.11"
           }
         }
       ]
     ],
     "plugins": [
-      "transform-es2015-modules-commonjs"
     ]
 }
