@@ -35,7 +35,7 @@ provider:
 
 functions:
   weather:
-    handler: src/handlers/test/handler.hello
+    handler: src/handlers/getWeather/handler.handler
     events:
       - http:
           path: weather
