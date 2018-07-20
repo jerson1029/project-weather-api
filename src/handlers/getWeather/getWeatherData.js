@@ -30,7 +30,7 @@ export const getWeatherDataByCity = async searchParams => {
         const params = searchParams;
         const header = { "x-api-key": process.env.API_KEY};
         const getWeatherDataFromAPI = await api.getWeatherData(weatherPath, params, header).catch(async () => {
-            const getWeatherFromDDB = await queryWeatherDataByLonLat(String(oppositeWeatherParams.lon), String(oppositeWeatherParams.lat));
+            const getWeatherFromDDB = await queryWeatherDataByCity(searchParams.q);
             return getWeatherFromDDB[0];
         });
         const currentLocationWeather = formatWeatherDDBData(getWeatherDataFromAPI.data);
