@@ -34,11 +34,10 @@ export const getWeatherDataByCity = async searchParams => {
             return getWeatherFromDDB[0];
         });
         const currentLocationWeather = formatWeatherDDBData(getWeatherDataFromAPI.data);
-        console.log(currentLocationWeather);
         await storeWeatherData(currentLocationWeather);
         return currentLocationWeather; 
     } catch (error) {
-        throw new Error('Something Went Wrong');
+        throw error;
     }
 };
 
@@ -58,7 +57,7 @@ export const getWeatherDataByCoordinates = async (searchParams) => {
         await storeWeatherData(oppositeLocationWeather);     
         return oppositeLocationWeather;    
     } catch (error) {
-        throw new Error('Something Went Wrong');
+        throw error;
     }
 };
 
