@@ -1,10 +1,10 @@
 const AWS = require('aws-sdk');
 
-AWS.config.region = process.env.AWS_REGION;
+AWS.config.region = process.env.AWSREGION;
 
 const put = params =>
     new Promise((resolve, reject) => {
-        const dynamodb = new AWS.DynamoDB({ region: process.env.AWS_REGION });
+        const dynamodb = new AWS.DynamoDB({ region: process.env.AWSREGION });
         const docClient = new AWS.DynamoDB.DocumentClient({ service: dynamodb });
         docClient.put(params, (err, data) => {
             if (err) {
@@ -17,7 +17,7 @@ const put = params =>
 
 const query = params =>
     new Promise((resolve, reject) => {
-        const dynamodb = new AWS.DynamoDB({ region: process.env.AWS_REGION });
+        const dynamodb = new AWS.DynamoDB({ region: process.env.AWSREGION });
         const docClient = new AWS.DynamoDB.DocumentClient({ service: dynamodb });
         docClient.query(params, (err, data) => {
             if (err) {
