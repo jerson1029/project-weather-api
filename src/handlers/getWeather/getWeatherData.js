@@ -7,9 +7,9 @@ const formatWeatherDDBData = (data) => {
     return {
         "id": String(data.id), 
         "weather": String(data.weather[0].description),
-        "temp": String(data.main.temp),
-        "temp_min": String(data.main.temp_min),
-        "temp_max": String(data.main.temp_max),
+        "temp": String(data.main.temp - 273.15),
+        "temp_min": String(data.main.temp_min - 273.15),
+        "temp_max": String(data.main.temp_max - 273.15),
         "wind_speed": String(data.wind.speed),
         "clouds": String(data.clouds.all),
         "city": String(data.name),
