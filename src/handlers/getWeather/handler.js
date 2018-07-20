@@ -8,7 +8,7 @@ const responseHandler = (code , body) => {
 
 export const handler = async (event, context, callback) => {
     try {
-        const getWeatherByCity = await getWeatherDataByCity(event.Body);
+        const getWeatherByCity = await getWeatherDataByCity(event.queryStringParameters);
         const getWeatherByCoordinates = await getWeatherDataByCoordinates(getWeatherByCity);
         callback(null, responseHandler(200, { currentWeather: getWeatherByCity, oppositeWeather: getWeatherByCoordinates}));
     
