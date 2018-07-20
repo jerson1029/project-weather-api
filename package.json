@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "Weather Api",
   "scripts": {
-    "start": "babel-node src/_testHandlerCall.js",
     "deploy": "serverless deploy",
     "test": "jest",
-    "test:cover": "NODE_ENV=test jest --coverage",
+    "test:cover": "jest --coverage",
     "lint": "eslint src/**/*.js --fix --ignore-path .eslintignore",
     "precommit": "yarn run lint",
     "prepush": "yarn run test"
@@ -21,7 +20,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
-    "babel-preset-env": "^1.7.0",
+    "babel-loader": "^7.1.5",
     "dotenv": "^6.0.0",
     "eslint": "^5.1.0",
     "eslint-plugin-import": "^2.13.0",

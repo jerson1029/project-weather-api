@@ -1,32 +1,27 @@
 const path = require('path');
-const serverlessWebpack = require('serverless-webpack');
+const slsw = require('serverless-webpack');
 
 module.exports = {
-  entry: serverlessWebpack.lib.entries,
-  target: 'node',
-  devtool: 'source-map',
-  output: {
-    libraryTarget: 'commonjs',
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-        include: __dirname,
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: __dirname,
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  externals: [
-    'aws-sdk',
-  ],
+    entry: slsw.lib.entries,
+    output: {
+        libraryTarget: 'commonjs',
+        filename: '[name].js',
+        path: path.resolve(__dirname, '.webpack')
+    },
+    target: 'node',
+    externals: ['aws-sdk'],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        babelrc: true
+                    }
+                }
+            }
+        ]
+    }
 };
