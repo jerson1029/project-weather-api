@@ -38,7 +38,7 @@ export const getWeatherDataByCity = async searchParams => {
         await storeWeatherData(currentLocationWeather);
         return currentLocationWeather; 
     } catch (error) {
-        throw error;
+        throw new Error('Something went wrong');
     }
 };
 
@@ -58,7 +58,7 @@ export const getWeatherDataByCoordinates = async (searchParams) => {
         await storeWeatherData(oppositeLocationWeather);     
         return oppositeLocationWeather;    
     } catch (error) {
-        throw error;
+        throw new Error('Something went wrong');
     }
 };
 
