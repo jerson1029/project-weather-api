@@ -13,6 +13,7 @@ provider:
     DYNAMODB_TABLE: ${self:service}
     API_KEY: ${env:WEATHER_API_KEY}
     WEATHER_URL: ${env:WEATHER_URL}
+    AWS_REGION: ${self:custom.common.AWS_REGION}
   iamRoleStatements:
     - Effect: Allow
       Action:
