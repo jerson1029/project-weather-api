@@ -34,6 +34,7 @@ export const getWeatherDataByCity = async searchParams => {
             return getWeatherFromDDB[0];
         });
         const currentLocationWeather = formatWeatherDDBData(getWeatherDataFromAPI.data);
+        console.log(currentLocationWeather);
         await storeWeatherData(currentLocationWeather);
         return currentLocationWeather; 
     } catch (error) {
