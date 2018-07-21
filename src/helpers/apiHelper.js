@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 import axios from 'axios';
 
 const isObject = obj => typeof obj === 'object' && obj !== null;

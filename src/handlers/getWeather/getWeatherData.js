@@ -1,18 +1,18 @@
-require('dotenv').config();
+
 import api from '../../helpers/apiHelper';
 import { weatherPath } from '../../helpers/pathHelper';
 import { storeWeatherData, queryWeatherDataByCity, queryWeatherDataByLonLat } from '../../model/processWeatherData';
 
 const formatWeatherDDBData = (data) => {
     return {
-        "id": String(data.id), 
+        "id": String(data.id || "Ocean"), 
         "weather": String(data.weather[0].description),
         "temp": String(data.main.temp - 273.15),
         "temp_min": String(data.main.temp_min - 273.15),
         "temp_max": String(data.main.temp_max - 273.15),
         "wind_speed": String(data.wind.speed),
         "clouds": String(data.clouds.all),
-        "city": String(data.name),
+        "city": String(data.name || "Ocean"),
         "lon": String(data.coord.lon),
         "lat": String(data.coord.lat)
     }
@@ -23,6 +23,16 @@ const getWeatherFromApi = async params => {
     const getWeatherDataFromAPI = await api.getWeatherData(weatherPath, params, header);
     const formattedWeatherData = formatWeatherDDBData(getWeatherDataFromAPI.data);
     return formattedWeatherData;
+};
+
+const calculateLongitude = (longitude) => {
+    const deductFromWholeSize = 180 - longitude;
+    const calculateValidLongitude = deductFromWholeSize >= 180 ? 180 : deductFromWholeSize;
+    if (calculateValidLongitude > 0 && calculateValidLongitude >= 180) {
+        return calculateValidLongitude;
+    } else {
+        return calculateValidLongitude * -1;
+    }
 };
 
 export const getWeatherDataByCity = async searchParams => {
@@ -45,8 +55,7 @@ export const getWeatherDataByCity = async searchParams => {
 export const getWeatherDataByCoordinates = async (searchParams) => {
     try {
         // Get Weather Halfway Around the world
-        const calclonValue = 180 - searchParams.lon;
-        const newlonValue = calclonValue-(2*calclonValue);
+        const newlonValue = calculateLongitude(searchParams.lon);
         const newlatValue = searchParams.lat * -1;
         const oppositeWeatherParams = { "lon": newlonValue, "lat": newlatValue };
         const header = { "x-api-key": process.env.API_KEY};
