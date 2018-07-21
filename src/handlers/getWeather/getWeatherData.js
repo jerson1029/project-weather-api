@@ -3,12 +3,11 @@ import { weatherPath } from '../../helpers/pathHelper';
 import { storeWeatherData, queryWeatherDataByCity, queryWeatherDataByLonLat } from '../../model/processWeatherData';
 
 const formatWeatherDDBData = (data) => {
-    return {
-        "id": String(data.id || "Ocean"), 
+    return { 
         "weather": String(data.weather[0].description),
-        "temp": String(data.main.temp - 273.15),
-        "temp_min": String(data.main.temp_min - 273.15),
-        "temp_max": String(data.main.temp_max - 273.15),
+        "temp": String(parseInt(data.main.temp - 273.15)),
+        "temp_min": String(parseInt(data.main.temp_min - 273.15)),
+        "temp_max": String(parseInt(data.main.temp_max - 273.15)),
         "wind_speed": String(data.wind.speed),
         "clouds": String(data.clouds.all),
         "city": String(data.name || "Ocean"),
