@@ -34,9 +34,9 @@ const weatherPayload = { data: {
 
 const expectedObjFormatForDDB = { id: '123',
 weather: 'clear sky',
-temp: '313.864',
-temp_min: '313.864',
-temp_max: '313.864',
+temp: '40.714',
+temp_min: '40.714',
+temp_max: '40.714',
 wind_speed: '1.96',
 clouds: '0',
 city: 'Kuala Lumpur',

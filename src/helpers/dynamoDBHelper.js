@@ -1,4 +1,3 @@
-
 const AWS = require('aws-sdk');
 
 AWS.config.region = process.env.AWSREGION;

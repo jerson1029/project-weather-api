@@ -1,4 +1,3 @@
-
 import api from '../../helpers/apiHelper';
 import { weatherPath } from '../../helpers/pathHelper';
 import { storeWeatherData, queryWeatherDataByCity, queryWeatherDataByLonLat } from '../../model/processWeatherData';
