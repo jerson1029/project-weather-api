@@ -41,6 +41,6 @@ const queryItems = async params => {
 };
 
 module.exports = {
-    queryItems,
+    query,
     put
 };

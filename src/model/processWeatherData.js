@@ -14,7 +14,7 @@ export const storeWeatherData = async weatherData => {
 
 export const queryWeatherDataByCity = async searchItem => {
     try {
-        const weatherData = await DDB.queryItems({
+        const weatherData = await DDB.query({
             ExpressionAttributeValues: {
                 ':city': searchItem,
             },
@@ -29,7 +29,7 @@ export const queryWeatherDataByCity = async searchItem => {
 
 export const queryWeatherDataByLonLat = async (lonValue, latValue) => {
     try {
-        const weatherData = await DDB.queryItems({
+        const weatherData = await DDB.query({
             IndexName: 'lon-lat-index',
             ExpressionAttributeValues: {
                 ':lon': lonValue,
